@@ -4,18 +4,18 @@ package simplees;
 @:autoBuild(simplees.AddSystemMacro.replaceMetas())
 class SystemManager
 {
-	var enh:EntityManager;
+    var em:EntityManager;
 
-	public function new(entityCreator:Class<Dynamic>)
-	{
-		enh = new EntityManager();
-		Reflect.setField(entityCreator, "EM", enh);
-	}
+    public function new(entityCreator:Class<Dynamic>)
+    {
+        em = new EntityManager();
+        Reflect.setField(entityCreator, "EM", em);
+    }
 
     function addSystem<T>(systemClass:Class<T>):T
     {
         var system:T = Type.createInstance(systemClass, []);
-        Reflect.setField(system, "em", enh);
+        Reflect.setField(system, "em", em);
 
         return system;
     }
