@@ -65,7 +65,6 @@ class AddSystemMacro
             switch(meta.expr)
             {
                 case EMeta(m, {expr:EConst(CIdent(systemName)), pos:_}):
-                    trace("dameta " + systemName);
                     fields = replaceMeta(systemName, meta, fields);
                 default:
 
@@ -73,8 +72,8 @@ class AddSystemMacro
         }
 
         // DEBUG
-        for(f in fields)
-            trace(new haxe.macro.Printer().printField(f));
+        // for(f in fields)
+            // trace(new haxe.macro.Printer().printField(f));
 
         return fields;
     }
